@@ -161,19 +161,24 @@
 <!-- ============ СТИЛИ ============ -->
 <style>
 :root{
-  --primary:#d62828;
-  --primary-dark:#9d0208;
-  --accent:#f77f00;
-  --accent-soft:#fff4e5;
-  --bg:#f7f7f9;
+  --primary:#2563eb;
+  --primary-dark:#1e40af;
+  --primary-darker:#1e3a8a;
+  --primary-light:#3b82f6;
+  --accent:#0ea5e9;
+  --accent-soft:#eaf2ff;
+  --hero-from:#e6f0ff;
+  --hero-to:#c9dfff;
+  --bg:#f4f7fb;
   --card:#ffffff;
-  --text:#1a1a1a;
-  --muted:#5a5f66;
-  --border:#e8e8ec;
+  --text:#1f2937;
+  --heading:#000000;
+  --muted:#64748b;
+  --border:#e2e8f0;
   --radius:14px;
   --radius-sm:10px;
-  --shadow:0 2px 12px rgba(17,17,17,.06);
-  --shadow-lg:0 10px 34px rgba(17,17,17,.10);
+  --shadow:0 2px 12px rgba(30,58,138,.08);
+  --shadow-lg:0 10px 34px rgba(30,58,138,.12);
 }
 
 *,*::before,*::after{box-sizing:border-box;}
@@ -194,19 +199,20 @@ body{
 
 /* ---------- Шапка ---------- */
 .hero{
-  background:linear-gradient(135deg, #eece8d 0%, #eab713 100%);
-  color:#222;
+  background:linear-gradient(135deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  color:var(--heading);
   padding:56px 20px 46px;
   text-align:center;
   position:relative;
   overflow:hidden;
+  border-bottom:3px solid var(--primary);
 }
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.15),transparent 55%),
-             radial-gradient(circle at 10% 90%,rgba(255,255,255,.10),transparent 50%);
+  background:radial-gradient(circle at 80% 20%,rgba(37,99,235,.10),transparent 55%),
+             radial-gradient(circle at 10% 90%,rgba(14,165,233,.10),transparent 50%);
   pointer-events:none;
 }
 .hero .container{position:relative;z-index:1;}
@@ -218,7 +224,7 @@ body{
   line-height:1.25;
   font-weight:800;
   letter-spacing:-.02em;
-  text-shadow:0 2px 12px rgba(0,0,0,.15);
+  color:#000;
 }
 
 .hero .updated{
@@ -228,10 +234,11 @@ body{
   margin-top:20px;
   padding:8px 16px;
   border-radius:999px;
-  background:rgba(255,255,255,.18);
-  backdrop-filter:blur(6px);
+  background:var(--primary);
+  color:#fff;
   font-size:14px;
   font-weight:600;
+  box-shadow:0 4px 12px rgba(37,99,235,.25);
 }
 .hero .updated::before{content:"🕒";font-size:15px;}
 
@@ -270,6 +277,7 @@ h2{
   border-bottom:2px solid var(--accent-soft);
   font-weight:800;
   letter-spacing:-.01em;
+  color:#000;
 }
 h2:first-child{margin-top:0;}
 
@@ -277,7 +285,7 @@ h3{
   font-size:clamp(17px,2vw,19px);
   margin:26px 0 10px;
   font-weight:700;
-  color:#222;
+  color:#000;
   line-height:1.4;
 }
 
@@ -286,7 +294,7 @@ strong{font-weight:700;color:#111;}
 a{
   color:var(--primary);
   text-decoration:none;
-  border-bottom:1px dashed rgba(214,40,40,.4);
+  border-bottom:1px dashed rgba(37,99,235,.4);
   transition:color .15s,border-color .15s;
 }
 a:hover{color:var(--primary-dark);border-bottom-color:var(--primary-dark);}
@@ -305,9 +313,9 @@ ul ul li::marker{color:var(--primary);}
 /* ---------- Блоки промокодов ---------- */
 .promo{
   position:relative;
-  background:linear-gradient(180deg,#fff8f0 0%,#fff 100%);
-  border:1px solid #ffe0bd;
-  border-left:4px solid var(--accent);
+  background:linear-gradient(180deg,#f2f7ff 0%,#ffffff 100%);
+  border:1px solid #c9dfff;
+  border-left:4px solid var(--primary);
   border-radius:var(--radius-sm);
   padding:16px 20px;
   margin:0 0 14px;
@@ -316,7 +324,7 @@ ul ul li::marker{color:var(--primary);}
 }
 .promo:hover{
   transform:translateY(-2px);
-  box-shadow:0 8px 22px rgba(214,40,40,.10);
+  box-shadow:0 8px 22px rgba(37,99,235,.14);
 }
 .promo strong:first-child{
   display:inline-block;
@@ -328,7 +336,7 @@ ul ul li::marker{color:var(--primary);}
   padding:3px 10px;
   border-radius:6px;
   margin-right:6px;
-  box-shadow:0 2px 6px rgba(214,40,40,.25);
+  box-shadow:0 2px 6px rgba(37,99,235,.3);
 }
 
 /* ---------- Таблица ---------- */
@@ -347,7 +355,7 @@ table{
   font-size:15.5px;
 }
 thead th{
-  background:linear-gradient(180deg,#d62828,#9d0208);
+  background:linear-gradient(180deg,var(--primary) 0%,var(--primary-dark) 100%);
   color:#fff;
   text-align:left;
   font-weight:700;
@@ -361,11 +369,11 @@ tbody td{
   border-top:1px solid var(--border);
   vertical-align:top;
 }
-tbody tr:nth-child(even){background:#fafafa;}
-tbody tr:hover{background:#fff6f1;}
+tbody tr:nth-child(even){background:#f8fbff;}
+tbody tr:hover{background:#eef4ff;}
 tbody td strong:first-child{
   font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
-  color:var(--primary-dark);
+  color:var(--primary-darker);
   font-size:15px;
   letter-spacing:.04em;
 }
@@ -377,23 +385,27 @@ tbody td strong:first-child{
   padding:16px 18px;
   margin-bottom:12px;
   background:#fff;
-  transition:border-color .15s;
+  transition:border-color .15s,box-shadow .15s;
 }
-.faq-item:hover{border-color:#ffd0b0;}
-.faq-item h3{margin:0 0 8px;}
+.faq-item:hover{
+  border-color:#c9dfff;
+  box-shadow:0 4px 14px rgba(37,99,235,.06);
+}
+.faq-item h3{margin:0 0 8px;color:#000;}
 .faq-item p{margin:0;color:var(--muted);}
 
-/* ---------- Футер-акция ---------- */
+/* ---------- CTA ---------- */
 .cta{
   margin-top:36px;
   padding:22px 24px;
   border-radius:var(--radius-sm);
-  background:linear-gradient(135deg,#fff4e5,#ffe7cc);
-  border:1px solid #ffd9a8;
+  background:linear-gradient(135deg,#eaf2ff,#d6e4ff);
+  border:1px solid #b9d2ff;
   text-align:center;
   font-size:17px;
+  color:#0b1f4b;
 }
-.cta strong{color:var(--primary-dark);}
+.cta strong{color:var(--primary-darker);}
 
 /* ---------- Футер ---------- */
 .site-footer{
@@ -419,9 +431,9 @@ tbody td strong:first-child{
 
 /* ---------- Печать ---------- */
 @media print{
-  .hero{background:#fff;color:#000;}
-  .hero h1{text-shadow:none;}
-  .hero .updated{background:#eee;color:#000;}
+  .hero{background:#fff;color:#000;border-bottom:2px solid #000;}
+  .hero h1{color:#000;text-shadow:none;}
+  .hero .updated{background:#eee;color:#000;box-shadow:none;}
   main{box-shadow:none;}
   .article-card{box-shadow:none;padding:0;}
 }
